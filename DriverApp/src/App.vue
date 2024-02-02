@@ -19,7 +19,7 @@
           </ion-item>
           <ion-item>
             <ion-icon :icon="logOut" slot="start"></ion-icon>
-            <ion-label>Logout</ion-label>
+            <ion-label @click="clear()">Logout</ion-label>
           </ion-item>
         </ion-list>
       </ion-content>
@@ -27,14 +27,14 @@
 
     <!-- content -->
     <ion-page id="main-content">
-      <ion-header>
+      <!-- <ion-header>
         <ion-toolbar>
           <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
           </ion-buttons>
           <ion-title>Menu</ion-title>
         </ion-toolbar>
-      </ion-header>
+      </ion-header> -->
       <ion-content class="ion-padding"><ion-router-outlet /></ion-content>
     </ion-page>
   </ion-app>
@@ -80,6 +80,12 @@ export default defineComponent({
   setup() {
     return { people, logOut, bluetooth };
   },
+  methods: {
+    clear () {
+      localStorage.clear();
+      location.reload();
+    }
+  }
 });
 </script>
 
